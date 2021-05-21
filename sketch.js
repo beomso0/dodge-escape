@@ -2,12 +2,13 @@ let stick;
 let chart;
 let imgs = [];
 let img;
-let dodge;
+let doge;
 let targetImg;
 let stage = 0;
 let myFont;
 let peace;
 let retire;
+let t = 0;
 
 function preload() {
   for(let i=0; i<5; i++) {
@@ -15,7 +16,7 @@ function preload() {
   }
   
   img = loadImage("./assets/shiba_ani.gif");
-  targetImg = loadImage("./assets/target_dodge.gif");
+  targetImg = loadImage("./assets/target_doge.gif");
   myFont = loadFont("./assets/rocket.ttf");
   peace = loadImage("./assets/peace_shiba2.jpg");
   retire = loadImage("./assets/dev_shiba.gif");
@@ -25,37 +26,52 @@ function setup() {
   
   fullscreen();
   createCanvas(windowWidth, windowHeight);
-  chart = loadImage('./assets/dodgechart2.png');
-  dodgeArray = new Dodges(50);
-  targetDodge = new Dodge(width/2, height/2, true, 13);  
+  chart = loadImage('./assets/dogechart2.png');
+  dogeArray = new Doges(50);
+  targetDoge = new Doge(width/2, height/2, true, 13);  
 }
 
 function draw() {
   switch (stage) {
     case 0:      
       image(chart, 0,0,width, height)
-      dodgeArray.display();
-      targetDodge.display();
+      dogeArray.display();
+      targetDoge.display();
       gameReady();
       break;
   
     case 1:;
       image(chart, 0,0,width, height)
-      dodgeArray.display();
-      dodgeArray.move();
-      dodgeArray.addDodge();
-      targetDodge.move();
-      targetDodge.display();
+      dogeArray.display();
+      dogeArray.move();
+      dogeArray.addDoge();
+      targetDoge.move();
+      targetDoge.display();
       break;
     
-    case 2:      
+    case 2:   
+      push();      
+      fadeIn(); 
       image(peace, 0,0,width, height)
+      pop();
       break;
     
-    case 3:      
+    case 3:       
+      push();   
+      fadeIn();
       image(retire, 0,0,width, height)
+      pop();
+      break;
   }
-    
+
+  push();
+  textAlign(CENTER);
+  fill(0,127);
+  textFont(myFont);
+  textSize(20);
+  text("다시하기: R", width-100,30);
+  text("포기하기: Q", width-100,60);
+  pop();
 }
 
 function mousePressed() {
@@ -63,15 +79,26 @@ function mousePressed() {
     stage ++;
   }
   levelUp();
-  targetDodge.isGotten();
+  targetDoge.isGotten();
 }
 
 function keyPressed() {
-  if(key == 'r') {
+  if(key == 'q') {
+    t = 0;
     stage =3;
-  } else if (key == 'p') {
+  } else if (key == 'r') {
+    stage =0;
+  } else if(key =='p') {    
+    t = 0;
     stage =2;
   }
+}
+
+function fadeIn() {
+  if(t<255) {
+    t++;
+  }
+  tint(255,t);
 }
 
 function gameReady() {
@@ -84,7 +111,7 @@ function gameReady() {
   text("KEY 도지를 잡아 탈출하세요", width/2,height/2-50);
   textSize(30);
   text("시간이 지날수록, 도지를 자꾸 클릭할수록 탈출이 점점 어려워집니다.", width/2,height/2+70);
-  text("탈출을 포기하시려면 R키를 누르세요.", width/2,height/2+120);
+  // text("탈출을 포기하시려면 Q키를 누르세요.", width/2,height/2+120);
   textSize(15);
   pop();
 }
