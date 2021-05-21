@@ -110,7 +110,7 @@ function gameReady() {
   textSize(50);
   text("KEY 도지를 잡아 탈출하세요", width/2,height/2-50);
   textSize(30);
-  text("시간이 지날수록, 도지를 자꾸 클릭할수록 탈출이 점점 어려워집니다.", width/2,height/2+70);
+  text("시간이 지날수록, 도지를 자꾸 클릭할수록 탈출이 어려워지니, 단번에 탈출하세요!", width/2,height/2+70);
   // text("탈출을 포기하시려면 Q키를 누르세요.", width/2,height/2+120);
   textSize(15);
   pop();
