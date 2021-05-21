@@ -79,7 +79,7 @@ function draw() {
 
 function mousePressed() {
   if(stage==0) {
-    stage ++;
+    stage =1;
   }
   levelUp();
   targetDoge.isGotten();
