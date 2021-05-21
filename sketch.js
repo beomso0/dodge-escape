@@ -22,7 +22,7 @@ function setup() {
 }
 
 function draw() {
-
+  noStroke();
   image(chart, 0,0,width, height);
   dodgeArray.display();
   dodgeArray.addDodge();
