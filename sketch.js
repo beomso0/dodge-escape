@@ -32,6 +32,11 @@ function setup() {
 }
 
 function draw() {
+  textAlign(CENTER);
+  fill(0);
+  textFont(myFont);
+  textSize(100);
+
   switch (stage) {
     case 0:      
       image(chart, 0,0,width, height)
@@ -49,17 +54,20 @@ function draw() {
       targetDoge.display();
       break;
     
-    case 2:   
+    case 2: 
+      
       push();      
       fadeIn(); 
       image(peace, 0,0,width, height)
-      pop();
+      text("ESCAPE SUCCESS", width/2,height/2+250);
+      pop();      
       break;
     
     case 3:       
       push();   
       fadeIn();
       image(retire, 0,0,width, height)
+      text("ESCAPE FAIL", width/2,height/2+250);
       pop();
       break;
   }
