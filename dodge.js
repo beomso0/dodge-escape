@@ -36,6 +36,7 @@ class Dodge {
     isGotten() {
         if(dist(mouseX, mouseY, this.pos.x+40, this.pos.y+40)<= 30) {
             console.log("GAME OVER");
+            stage ++;
         }
     }
 }
@@ -60,10 +61,15 @@ class Dodges {
 
     display() {
         this.dodges.forEach(function(item) {
-            item.move();
             item.display();
         })
-    }    
+    }
+
+    move() {
+        this.dodges.forEach(function(item) {
+            item.move();
+        })
+    }
 }
 
 function levelUp() {
