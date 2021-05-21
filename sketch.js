@@ -1,20 +1,15 @@
-let stick;
 let chart;
-let imgs = [];
 let img;
-let doge;
 let targetImg;
 let stage = 0;
 let myFont;
 let peace;
 let retire;
+let dogeArray;
+let targetDoge;
 let t = 0;
 
-function preload() {
-  for(let i=0; i<5; i++) {
-    imgs[i] = loadImage("./assets/images/frame" + i + ".png");
-  }
-  
+function preload() {  
   img = loadImage("./assets/shiba_ani.gif");
   targetImg = loadImage("./assets/target_doge.gif");
   myFont = loadFont("./assets/rocket.ttf");
@@ -96,6 +91,7 @@ function keyPressed() {
     stage =3;
   } else if (key == 'r') {
     stage =0;
+    reinit();
   } else if(key =='p') {    
     t = 0;
     stage =2;
@@ -122,4 +118,11 @@ function gameReady() {
   // text("탈출을 포기하시려면 Q키를 누르세요.", width/2,height/2+120);
   textSize(15);
   pop();
+}
+
+function reinit() {  
+  dogeArray = new Doges(50);
+  targetDoge = new Doge(width/2, height/2, true, 13);
+  t = 0;
+  stage=0;
 }
