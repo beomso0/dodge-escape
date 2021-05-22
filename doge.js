@@ -8,15 +8,24 @@ class Doge {
     }
 
     move() {
-        this.vel.add(this.accel);
+        if(this.vel.x < 0) {
+            this.vel.x -= this.accel.x;
+        } else if (this.vel.x > 0) {
+            this.vel.x += this.accel.x;
+        }
+
+        if(this.vel.y < 0) {
+            this.vel.y -= this.accel.y;
+        } else if (this.vel.y > 0) {
+            this.vel.y += this.accel.y;
+        }
+        
         this.pos.add(this.vel);
         
         if (this.pos.x <= 0 || this.pos.x >=width - this.size) {
             this.vel.x *= -1;
-            this.accel.x *= -1;
         } else if (this.pos.y <= 0 || this.pos.y >= height - this.size) {
             this.vel.y *= -1;
-            this.accel.y *= -1;
         }
     }
 
@@ -75,5 +84,5 @@ class Doges {
 function levelUp() {
     dogeArray.makeSpeed += 3;
     console.log(targetDoge.accel);
-    targetDoge.accel.mult(1.5);
+    targetDoge.accel.mult(2.3);
 }

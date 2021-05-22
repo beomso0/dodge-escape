@@ -23,7 +23,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   chart = loadImage('./assets/dogechart2.png');
   dogeArray = new Doges(50);
-  targetDoge = new Doge(width/2, height/2, true, 13);  
+  targetDoge = new Doge(width/2, height/2, true, 15);  
 }
 
 function draw() {
